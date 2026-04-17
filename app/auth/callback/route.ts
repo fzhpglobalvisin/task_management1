@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { NextResponse } from 'next/server';
 
-export async function GET(request) {
+export async function GET(request: any) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
   // "next" allows you to redirect to a specific page after login, defaults to home
@@ -9,10 +9,10 @@ export async function GET(request) {
 
   if (code) {
     const supabase = await createClient();
-    
+
     // This exchanges the temporary code for a permanent session
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    
+
     if (!error) {
       // Login successful! Send user to the home page
       return NextResponse.redirect(`${origin}${next}`);
