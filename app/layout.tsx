@@ -9,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         {/* We use a wrapper div to hold the main layout styles. 
             This prevents browser extensions (like Grammarly) from 
